@@ -16,6 +16,8 @@ in
     ./modules/ghostty.nix
     ./modules/fuzzel.nix
     ./modules/git.nix
+    ./modules/ssh.nix
+    ./modules/fcitx5.nix
   ];
 
   home.username = "guolisen";

@@ -66,6 +66,25 @@
     LC_TIME = "zh_CN.UTF-8";
   };
 
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5 = {
+      addons = with pkgs; [
+        fcitx5-rime      # Rime 引擎
+        fcitx5-gtk       # GTK 应用支持
+        qt6Packages.fcitx5-configtool  # Changed from fcitx5-configtool
+      ];
+      waylandFrontend = true; # Wayland 环境建议开启
+    };
+  };
+
+  # environment.sessionVariables
+  environment.sessionVariables = {
+    XMODIFIERS = "@im=fcitx";
+    INPUT_METHOD = "fcitx";
+  };
+
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
   # fileSystems."/" = {
@@ -94,6 +113,9 @@
 
   programs.niri.enable = true;
   programs.nano.enable = false;
+
+  programs.ssh.startAgent = true;
+  services.gnome.gcr-ssh-agent.enable = false;
   
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
