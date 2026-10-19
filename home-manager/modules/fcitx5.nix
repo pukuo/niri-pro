@@ -18,8 +18,8 @@
     Theme=catppuccin-mocha-sapphire
     DarkTheme=catppuccin-mocha-pink
     UseDarkTheme=True
-    Font="JetbrainsMono Nerd Font 10"
-    MenuFont="JetbrainsMono Nerd Font 10"
-    TrayFont="JetbrainsMono Nerd Font 10"
+    Font="BlexMono Nerd Font 10"
+    MenuFont="BlexMono Nerd Font 10"
+    TrayFont="BlexMono Nerd Font 10"
   '';
 }

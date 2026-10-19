@@ -18,6 +18,7 @@ in
     ./modules/git.nix
     ./modules/ssh.nix
     ./modules/fcitx5.nix
+    ./modules/cursor.nix
   ];
 
   home.username = "guolisen";

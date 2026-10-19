@@ -13,7 +13,7 @@
     settings = {
       theme = "Catppuccin Mocha"; # 选择一个主题
       background-opacity = 0.95; # 设置背景透明度
-      font-family = "JetBrainsMono Nerd Font"; # 设置字体
+      font-family = "BlexMono Nerd Font"; # 设置字体
       font-size = 12; # 设置字号
 
       adjust-cell-width = "15%";

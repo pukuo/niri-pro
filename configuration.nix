@@ -118,7 +118,7 @@
   services.gnome.gcr-ssh-agent.enable = false;
   
   fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
+    nerd-fonts.blex-mono
   ];
 
   # Configure keymap in X11
