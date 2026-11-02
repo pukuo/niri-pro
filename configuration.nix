@@ -17,9 +17,6 @@
   networking.hostName = "nexus"; # Define your hostname.
 
   # Configure network connections interactively with nmcli or nmtui.
-  #networking.networkmanager.enable = true;
-  #networking.wireless.iwd.enable = true;
-  #networking.networkmanager.wifi.backend = "iwd";
   networking.networkmanager = {
     enable = true;
     wifi.backend = "iwd";
@@ -71,11 +68,36 @@
     type = "fcitx5";
     fcitx5 = {
       addons = with pkgs; [
-        fcitx5-rime      # Rime 引擎
+        #fcitx5-rime      # Rime 引擎
         fcitx5-gtk       # GTK 应用支持
-        qt6Packages.fcitx5-configtool  # Changed from fcitx5-configtool
+        #qt6Packages.fcitx5-configtool  # Changed from fcitx5-configtool
+        (fcitx5-rime.override {
+          rimeDataPkgs = [
+            rime-ice
+          ];
+        })
       ];
       waylandFrontend = true; # Wayland 环境建议开启
+      settings = {
+        inputMethod = {
+          GroupOrder."0" = "Default";
+          "Groups/0" = {
+            Name = "Default";
+            "Default Layout" = "us";
+            # 👇 这里把开机默认输入法设为键盘-英语
+            DefaultIM = "keyboard-us"; 
+          };
+          # 列表第 1 个：英语键盘
+          "Groups/0/Items/0" = {
+            Name = "keyboard-us";
+            Layout = "";
+          };
+          # 列表第 2 个：Rime
+          "Groups/0/Items/1" = {
+            Name = "rime";
+          };
+        };
+      };
     };
   };
 
@@ -87,16 +109,7 @@
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
-  # fileSystems."/" = {
-  #   device = "/dev/sda2";
-  #   fsType = "ext4";
-  # };
 
-  # fileSystems."/boot" = {
-  #   device = "/dev/sda1";
-  #   fsType = "vfat";
-  # };
-  # 
   zramSwap.enable = true;
   swapDevices = [{
     device = "/var/lib/swapfile";
