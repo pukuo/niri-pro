@@ -69,7 +69,7 @@
     fcitx5 = {
       addons = with pkgs; [
         #fcitx5-rime      # Rime 引擎
-        fcitx5-gtk       # GTK 应用支持
+        #fcitx5-gtk       # GTK 应用支持
         #qt6Packages.fcitx5-configtool  # Changed from fcitx5-configtool
         (fcitx5-rime.override {
           rimeDataPkgs = [
