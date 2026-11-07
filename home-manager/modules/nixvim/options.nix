@@ -46,6 +46,11 @@
       precedes = "󰮹";
     };
 
+    # Remove EOB
+    fillchars = {
+      eob = " ";
+    };
+
     foldmethod = "indent";
     foldlevel = 99;
     foldenable = false;

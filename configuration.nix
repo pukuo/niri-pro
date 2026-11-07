@@ -129,7 +129,9 @@
 
   programs.ssh.startAgent = true;
   services.gnome.gcr-ssh-agent.enable = false;
-  
+
+  services.v2raya.enable = true;
+
   fonts.packages = with pkgs; [
     nerd-fonts.blex-mono
   ];
@@ -214,6 +216,13 @@
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "26.05"; # Did you read the comment?
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+  nix.settings.auto-optimise-store = true;
 
 }
 
