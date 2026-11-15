@@ -120,7 +120,7 @@
   systemd.oomd.enable = true;
   
   boot.loader.systemd-boot.configurationLimit = 5;
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages;
 
   services.getty.autologinUser = "guolisen";
 

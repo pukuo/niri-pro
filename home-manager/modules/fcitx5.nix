@@ -1,19 +1,19 @@
-{ ... }:
+{ config, ... }:
 
+let
+  dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
+in
 {
-  # 链接 Mellow 主题文件到 ~/.local/share/fcitx5/themes/
   xdg.dataFile = {
-    "fcitx5/themes/catppuccin-mocha-pink" = {
-      source = ../../config/fcitx5/themes/catppuccin-mocha-pink;
-      recursive = true;
-    };
-    "fcitx5/themes/catppuccin-mocha-sapphire" = {
-      source = ../../config/fcitx5/themes/catppuccin-mocha-sapphire;
-      recursive = true;
-    };
+    # 1. 链接你的主题
+    "fcitx5/themes/catppuccin-mocha-pink".source = ../../config/fcitx5/themes/catppuccin-mocha-pink;
+    "fcitx5/themes/catppuccin-mocha-sapphire".source = ../../config/fcitx5/themes/catppuccin-mocha-sapphire;
+
+    # 2. 优雅链接 Rime 的单独配置文件
+    "fcitx5/rime/default.custom.yaml".source =
+      config.lib.file.mkOutOfStoreSymlink "${dotfiles}/fcitx5/custom/default.custom.yaml";
   };
 
-  # 设置 classicui 使用 Mellow 主题
   xdg.configFile."fcitx5/conf/classicui.conf".text = ''
     Theme=catppuccin-mocha-sapphire
     DarkTheme=catppuccin-mocha-pink
